@@ -7,6 +7,8 @@
 						<th>タイトル</th>
 						<th>締め切り</th>
 						<th>Done</th>
+						<th>削除</th>
+						<th>編集</th>
 						<th>備考</th>
 						<th>重要?</th>
 					</tr>
@@ -27,6 +29,14 @@
 							</td>
 							<td>
 								締め切りまで<%= (task.due_date - Date.today).to_i %>日
+							</td>
+							<td>
+								<form action="/tasks/<%= task.id %>/delete" method="post">
+									<input type="submit" value="削除">
+								</form>
+							</td>
+							<td>
+								<a href="/tasks/<%= task.id %>/edit">編集</a>
 							</td>
 							<td>
 								<% unless task.completed %>
@@ -57,7 +67,7 @@
 					<tr>
 						<td colspan="6">
 							<a href="/tasks/new">新しいtodo</a></td></tr>
-						</td>
+						</th>
 					</tr>
 				</tbody>
 			</table>
