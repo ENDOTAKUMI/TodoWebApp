@@ -5,6 +5,9 @@
 				<%= erb :_count_due, locals: {title: "トップ", url: "/", tasks: Task.all} %>
 				<li class="list-group-item"><a href="/tasks/done">done</a></li>
 				<%= erb :_count_due, locals: {title: "締切過ぎた", url: "/tasks/over", tasks: Task.all} %>
+
+				<%= erb :_count_due, locals: {title: "重要", url: "/tasks/star", tasks: Task.all} %>
+
 				<% @lists.each do |list| %>
 					<%= erb :_count_due, locals: {title: list.name, url: "/?list=#{list.id}", tasks: list.tasks} %>
 				<% end %>

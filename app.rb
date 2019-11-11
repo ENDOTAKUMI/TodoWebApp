@@ -135,3 +135,9 @@ get '/tasks/done' do
   @tasks = current_user.tasks.where(completed:true)
   erb :index
 end
+
+get '/tasks/star' do
+  @lists = List.all
+  @tasks = current_user.tasks.where(star:true)
+  erb :index
+end
