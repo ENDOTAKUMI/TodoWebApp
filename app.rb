@@ -125,19 +125,31 @@ post '/tasks/:id' do
 end
 
 get '/tasks/over' do
-  @lists = List.all
-  @tasks = current_user.tasks.due_over
-  erb :index
+  if !current_user.nil? then
+    @lists = List.all
+    @tasks = current_user.tasks.due_over
+    erb :index
+  else
+    redirect '/'
+  end
 end
 
 get '/tasks/done' do
-  @lists = List.all
-  @tasks = current_user.tasks.where(completed:true)
-  erb :index
+  if !current_user.nil? then
+    @lists = List.all
+    @tasks = current_user.tasks.where(completed:true)
+    erb :index
+  else
+    redirect '/'
+  end
 end
 
 get '/tasks/star' do
-  @lists = List.all
-  @tasks = current_user.tasks.where(star:true)
-  erb :index
+  if !current_user.nil? then
+    @lists = List.all
+    @tasks = current_user.tasks.where(star:true)
+    erb :index
+  else
+    redirect '/'
+  end
 end
